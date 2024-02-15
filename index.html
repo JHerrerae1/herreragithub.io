@@ -1,1 +1,27 @@
 # herrera.github.io
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de un Hexágono</title>
+</head>
+<body>
+    <script>
+        // Importar la función sqrt de la biblioteca math de Python
+        function sqrt(x) {
+            return Math.sqrt(x);
+        }
+
+        // Solicitar al usuario la longitud del lado
+        var lado_str = prompt("Ingrese la longitud de su lado:");
+        var lado = parseFloat(lado_str);  // Convertir la entrada a un número de punto flotante
+
+        // Calcular el área
+        var area_hexagono = (3 * sqrt(3) / 2) * Math.pow(lado, 2);
+
+        // Mostrar el resultado
+        alert("El área del hexágono es: " + area_hexagono.toFixed(2));
+    </script>
+</body>
+</html>
