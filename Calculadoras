@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Probabilidad de Poisson</title>
+</head>
+<body>
+    <h1>Calcular Probabilidad de Poisson</h1>
+    <form id="poissonForm">
+        <label for="kInput">Ingrese el valor de k (número de eventos): </label>
+        <input type="number" id="kInput" name="kInput" required><br><br>
+        <label for="lambdaInput">Ingrese el valor de lambda (tasa media de ocurrencia): </label>
+        <input type="number" step="any" id="lambdaInput" name="lambdaInput" required><br><br>
+        <button type="button" onclick="calcularPoisson()">Calcular</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularPoisson() {
+            var k = parseFloat(document.getElementById("kInput").value);
+            var lambda = parseFloat(document.getElementById("lambdaInput").value);
+
+            var probabilidad = calcularPoissonJS(k, lambda);
+
+            document.getElementById("resultado").innerText = `La probabilidad de P(k=${k}) con lambda (λ) = ${lambda} es: ${probabilidad.toFixed(6)}`;
+        }
+
+        function calcularPoissonJS(k, l) {
+            return (Math.exp(-l) * Math.pow(l, k)) / factorial(k);
+        }
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+    </script>
+</body>
+</html>
