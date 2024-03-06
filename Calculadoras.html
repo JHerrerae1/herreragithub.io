@@ -58,7 +58,8 @@
 
                 var probabilidad = calcularPoisson(k, lambda);
 
-                resultado.innerText = `La probabilidad de P(k=${k}) con lambda (λ) = ${lambda} es: ${probabilidad.toFixed(6)}`;
+                resultado.innerHTML = `La probabilidad de P(k=${k}) con lambda (λ) = ${lambda} es: ${probabilidad.toFixed(6)} (decimal) <br>
+                                        ${((probabilidad * 100).toFixed(2))}% (porcentaje)`;
             } else if (tipoDistribucion === "binomial") {
                 var k = parseInt(document.getElementById("kInputBinomial").value);
                 var n = parseInt(document.getElementById("nInput").value);
@@ -66,7 +67,8 @@
 
                 var probabilidad = calcularBinomial(n, k, p);
 
-                resultado.innerText = `La probabilidad binomial es: ${probabilidad.toFixed(6)}`;
+                resultado.innerHTML = `La probabilidad binomial es: ${probabilidad.toFixed(6)} (decimal) <br>
+                                        ${((probabilidad * 100).toFixed(2))}% (porcentaje)`;
             }
         }
 
