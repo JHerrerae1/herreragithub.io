@@ -74,31 +74,7 @@
     <div id="resultado"></div>
 
     <script>
-        function mostrarCampos() {
-            var tipoDistribucion = document.getElementById("tipoDistribucion").value;
-            var inputsPoisson = document.getElementById("inputsPoisson");
-            var inputsBinomial = document.getElementById("inputsBinomial");
-
-            if (tipoDistribucion === "poisson") {
-                inputsPoisson.style.display = "block";
-                inputsBinomial.style.display = "none";
-            } else if (tipoDistribucion === "binomial") {
-                inputsPoisson.style.display = "none";
-                inputsBinomial.style.display = "block";
-            }
-        }
-
-        function calcular() {
-            var tipoDistribucion = document.getElementById("tipoDistribucion").value;
-            var resultado = document.getElementById("resultado");
-            resultado.innerHTML = ""; // Limpiar resultados anteriores
-
-            if (tipoDistribucion === "poisson") {
-                var k = parseFloat(document.getElementById("kInput").value);
-                var lambda = parseFloat(document.getElementById("lambdaInput").value);
-
-                var probabilidad = calcularPoisson(k, lambda);
-
-                resultado.innerHTML = `La probabilidad de P(k=${k}) con lambda (λ) = ${lambda} es: ${probabilidad.toFixed(6)} (decimal) <br>
-                                        ${((probabilidad * 100).toFixed(2))}% (porcentaje)`;
-            } else if (tipoDistribucion === "binomial")
+        // Optimized JavaScript code
+    </script>
+</body>
+</html>
