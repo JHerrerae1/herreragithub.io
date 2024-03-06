@@ -7,22 +7,24 @@
 </head>
 <body>
     <h1>Calcular Probabilidad</h1>
-    <label for="opcion">Seleccione el tipo de distribución:</label>
-    <select id="opcion">
+    <label for="tipoDistribucion">Seleccione el tipo de distribución:</label>
+    <select id="tipoDistribucion" onchange="mostrarCampos()">
         <option value="poisson">Poisson</option>
         <option value="binomial">Binomial</option>
     </select><br><br>
     <form id="form">
-        <div id="poissonInputs">
+        <div id="inputsPoisson">
             <label for="kInput">Ingrese el valor de k (número de eventos): </label>
             <input type="number" id="kInput" name="kInput" required><br><br>
             <label for="lambdaInput">Ingrese el valor de lambda (tasa media de ocurrencia): </label>
             <input type="number" step="any" id="lambdaInput" name="lambdaInput" required><br><br>
         </div>
-        <div id="binomialInputs" style="display: none;">
-            <label for="nInput">Inserta el valor de n: </label>
+        <div id="inputsBinomial" style="display: none;">
+            <label for="kInputBinomial">Ingrese el valor de k (número de éxitos): </label>
+            <input type="number" id="kInputBinomial" name="kInputBinomial" required><br><br>
+            <label for="nInput">Inserta el valor de n (número de ensayos): </label>
             <input type="number" id="nInput" name="nInput" required><br><br>
-            <label for="pInput">Inserta el valor de p: </label>
+            <label for="pInput">Inserta el valor de p (probabilidad de éxito): </label>
             <input type="number" step="any" id="pInput" name="pInput" required><br><br>
         </div>
         <button type="button" onclick="calcular()">Calcular</button>
@@ -31,20 +33,34 @@
     <p id="resultado"></p>
 
     <script>
+        function mostrarCampos() {
+            var tipoDistribucion = document.getElementById("tipoDistribucion").value;
+            var inputsPoisson = document.getElementById("inputsPoisson");
+            var inputsBinomial = document.getElementById("inputsBinomial");
+
+            if (tipoDistribucion === "poisson") {
+                inputsPoisson.style.display = "block";
+                inputsBinomial.style.display = "none";
+            } else if (tipoDistribucion === "binomial") {
+                inputsPoisson.style.display = "none";
+                inputsBinomial.style.display = "block";
+            }
+        }
+
         function calcular() {
-            var opcion = document.getElementById("opcion").value;
+            var tipoDistribucion = document.getElementById("tipoDistribucion").value;
             var resultado = document.getElementById("resultado");
             resultado.innerHTML = ""; // Limpiar resultados anteriores
 
-            if (opcion === "poisson") {
+            if (tipoDistribucion === "poisson") {
                 var k = parseFloat(document.getElementById("kInput").value);
                 var lambda = parseFloat(document.getElementById("lambdaInput").value);
 
                 var probabilidad = calcularPoisson(k, lambda);
 
                 resultado.innerText = `La probabilidad de P(k=${k}) con lambda (λ) = ${lambda} es: ${probabilidad.toFixed(6)}`;
-            } else if (opcion === "binomial") {
-                var k = parseInt(document.getElementById("kInput").value);
+            } else if (tipoDistribucion === "binomial") {
+                var k = parseInt(document.getElementById("kInputBinomial").value);
                 var n = parseInt(document.getElementById("nInput").value);
                 var p = parseFloat(document.getElementById("pInput").value);
 
